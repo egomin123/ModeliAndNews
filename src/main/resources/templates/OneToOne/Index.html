@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div th:insert="Fragments/Header :: defaultHeader"/>
+
+<form th:action="${'/OneToOne/add'}" method="post">
+    <input type="text" name="namej" placeholder="Введите имя">
+    <select  name="ima">
+        <div th:each="element : ${stand}">
+            <option th:text="${element.ima}"></option>
+        </div>
+    </select>
+    <br>
+    <button type="submit" >Добавить персонажа</button>
+</form>
+
+<br/>
+<div >
+    <div th:each="el : ${jojo}">
+        <h3 th:text="${el.name}"></h3>
+        <h4 th:text="${el.stand.getIma()}"></h4>
+    </div>
+</div>
+
+</body>
+</html>

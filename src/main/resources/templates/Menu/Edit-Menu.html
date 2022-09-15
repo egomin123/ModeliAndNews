@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body >
+<div th:insert="Fragments/Header :: defaultHeader"> </div>
+<div th:each="el : ${Menu}" ></div>
+<form th:object="${menu}" th:action="'/Menu/edit/' + ${id}", method="post" class="Zapis">
+
+
+
+  <p>Название блюда:
+  <input type="text" th:value="${bludo}" id="bludo" name="bludo" th:field="*{bludo}" placeholder="Название">
+  <div th:if="${#fields.hasErrors('bludo')}" th:errors="*{bludo}"> </div>
+  </p>
+  <p>Описание:
+  <input type="text" th:value="${opisanie}" id="opisanie" name="opisanie" th:field="*{opisanie}" placeholder="Описание">
+  <div th:if="${#fields.hasErrors('opisanie')}" th:errors="*{opisanie}" > </div>
+  </p>
+  <p>Ингридиенты:
+  <input type="text" th:value="${ingridient}" id="ingridient" name="ingridient" th:field="*{ingridient}" placeholder="Ингридиенты">
+  <div th:if="${#fields.hasErrors('ingridient')}" th:errors="*{ingridient}" > </div>
+  </p>
+  <p>Цена блюда:
+  <input type="number" th:value="${cena}" id="cena" name="cena" th:field="*{cena}" placeholder="Цена">
+  <div th:if="${#fields.hasErrors('cena')}" th:errors="*{cena}" > </div>
+  </p>
+  <p>Количество ккал:
+  <input type="number" th:value="${kkal}" id="kkal" name="kkal" th:field="*{kkal}" placeholder="Ккал">
+  <div th:if="${#fields.hasErrors('kkal')}" th:errors="*{kkal}" > </div>
+  </p> <br>
+
+  <input type="submit" value="изменить блюдо" class="btn btn-seccsess"/> <br>
+  <a href="/Menu/"> Назад</a>
+
+
+  </div>
+</form>
+
+</body>
+</html>
